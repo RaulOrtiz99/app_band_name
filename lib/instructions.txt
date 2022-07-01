@@ -1,0 +1,2 @@
+esta es una app que tiene como objetivo tener sockets de por medio 
+asi mismo es una app de bandas super sencillas
