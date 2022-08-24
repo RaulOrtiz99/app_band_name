@@ -1,19 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'package:flutter/material.dart'; 
+import '../services/socket_service.dart';
 
-
-class StatusPage extends StatefulWidget {
+class StatusPage extends StatelessWidget {
   const StatusPage({Key? key}) : super(key: key);
 
   @override
-  State<StatusPage> createState() => _StatusPageState();
-}
-
-class _StatusPageState extends State<StatusPage> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
+    final socketService = Provider.of<SocketService>(context);
+    return  Scaffold(
+      body: Center(
+        child: Text("Hola mundo cruel"),
+      ),
     );
   }
 }
