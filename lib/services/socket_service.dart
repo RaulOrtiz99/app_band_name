@@ -5,8 +5,10 @@ enum SeverStatus { Online, Offline, Connecting }
 
 class SocketService with ChangeNotifier {
   SeverStatus _severStatus = SeverStatus.Connecting;
+   IO.Socket _socket;
 
-  get serverStatus => this._severStatus;
+  SeverStatus get serverStatus => this._severStatus;
+  IO.Socket get socket => this._socket;
 
   SocketService() {
     this._initConfig();
@@ -18,23 +20,18 @@ class SocketService with ChangeNotifier {
       'autoConnect': true,
     });
 
-    socket.on('connect', (_) {
+    this._socket.on('connect', (_) {
       this._severStatus = SeverStatus.Online;
       notifyListeners();
     });
 
-
-    socket.on('disconnect', (_) {
+    this._socket.on('disconnect', (_) {
       this._severStatus = SeverStatus.Offline;
       notifyListeners();
     });
 
-
-    socket.on('nuevo-mensaje',(payload){
-      print('nuevo-mensaje: ${payload}');
-    });
-
-
-
+    // socket.on('nuevo-mensaje', (payload) {
+    //   print('nuevo-mensaje: ${payload}');
+    // });
   }
 }
